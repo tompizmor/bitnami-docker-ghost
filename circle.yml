@@ -10,7 +10,7 @@ jobs:
           IMAGE_NAME: ghost
           CHART_NAME: ghost
           CHART_REPO: https://github.com/tompizmor/charts-1
-          EXTRA_CHART_REPOS_LIST: "https://github.com/tompizmor/charts"
+          EXTRA_CHART_REPOS_LIST: "https://github.com/tompizmor/ibm-charts"
           DOCKER_PROJECT: tompizmor
 
 
@@ -48,9 +48,9 @@ jobs:
           name: Publish docker image
           command: |
             if [ -n "${CIRCLE_TAG}" ]; then
-              curl -sL https://raw.githubusercontent.com/tompizmor/test-infra/chart-test/circle/docker-release-image.sh | bash -
+              curl -sL https://raw.githubusercontent.com/tompizmor/test-infra/ibm-chart/circle/docker-release-image.sh | bash -
             elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-              curl -sL https://raw.githubusercontent.com/tompizmor/test-infra/chart-test/circle/docker-development-image.sh | bash -
+              curl -sL https://raw.githubusercontent.com/tompizmor/test-infra/ibm-chart/circle/docker-development-image.sh | bash -
             fi
 
 workflows:
