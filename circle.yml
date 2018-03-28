@@ -38,7 +38,7 @@ jobs:
       - run:
           name: Build docker image
           command: |
-            curl -sL https://raw.githubusercontent.com/tompizmor/test-infra/chart_rolling_update/circle/docker-image-test.sh | bash -
+            curl -sL https://raw.githubusercontent.com/tompizmor/test-infra/chart_rolling_tag/circle/docker-image-test.sh | bash -
       - save_cache:
           key: cache-{{ .Branch }}-{{ epoch }}
           paths:
@@ -47,9 +47,9 @@ jobs:
           name: Publish docker image
           command: |
             if [ -n "${CIRCLE_TAG}" ]; then
-              curl -sL https://raw.githubusercontent.com/tompizmor/test-infra/chart_rolling_update/circle/docker-release-image.sh | bash -
+              curl -sL https://raw.githubusercontent.com/tompizmor/test-infra/chart_rolling_tag/circle/docker-release-image.sh | bash -
             elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-              curl -sL https://raw.githubusercontent.com/tompizmor/test-infra/chart_rolling_update/circle/docker-development-image.sh | bash -
+              curl -sL https://raw.githubusercontent.com/tompizmor/test-infra/chart_rolling_tag/circle/docker-development-image.sh | bash -
             fi
 
 workflows:
